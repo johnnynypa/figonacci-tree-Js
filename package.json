@@ -1,0 +1,16 @@
+{
+  "name": "fibonaccijs",
+  "version": "1.0.0",
+  "description": "Algoritmo de arbol figonacci con Js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "figonacci",
+    "algorithm"
+  ],
+  "author": "Johnny Pacheco Villarreal",
+  "license": "MIT"
+}
