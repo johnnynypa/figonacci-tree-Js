@@ -20,13 +20,15 @@ var messages = [];
 
 class Nodo {
 	constructor(dat, izq, der) {
-		this.dato = dat;
+		this.dato = (dat) ? dat : null;
 		this.izq = (izq) ? izq : null;
 		this.der = (der) ? der : null;
 	}
 }
 
 main();
+
+var rootNode = new Nodo();
 
 function main() {
 	mode()
@@ -35,11 +37,26 @@ function main() {
 			if(h == 0) process.exit(0);
 			console.log("La altura es: " + h);
 
+			await figo(rootNode, h);
+			console.log( JSON.stringify(rootNode));
 
-			
 		})
 		.catch(() => {process.exit(0)});
 
+}
+
+function figo(raiz, h){
+	raiz.dato = h;
+	return new Promise( (resolve, reject) => {
+		if(h > 1){
+			raiz.izq = new Nodo(h-2);
+			figo(raiz.izq, h-2);
+	
+			raiz.der = new Nodo(h-1);
+			figo(raiz.der, h-1);
+		}
+		resolve();
+	})
 }
 
 function height(){
