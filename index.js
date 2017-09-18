@@ -37,23 +37,27 @@ function main() {
 			if(h == 0) process.exit(0);
 			console.log("La altura es: " + h);
 
-			await figo(rootNode, h);
+			await figonacci(rootNode, h);
+			console.log("Cantidad Nodos finales: \t" + (Math.pow(2, h)/2));
 			console.log( JSON.stringify(rootNode));
 
 		})
 		.catch(() => {process.exit(0)});
+}
+
+function imprimir(alturaOrigin){
 
 }
 
-function figo(raiz, h){
+function figonacci(raiz, h){
 	raiz.dato = h;
 	return new Promise( (resolve, reject) => {
 		if(h > 1){
 			raiz.izq = new Nodo(h-2);
-			figo(raiz.izq, h-2);
+			figonacci(raiz.izq, h-2);
 	
 			raiz.der = new Nodo(h-1);
-			figo(raiz.der, h-1);
+			figonacci(raiz.der, h-1);
 		}
 		resolve();
 	})
